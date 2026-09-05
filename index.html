@@ -107,44 +107,52 @@
 
   <h1>Brzo citanje - brojac, generator, tajmer</h1>
 
+  <div class="row">
+    <button onclick="toggleControls()" id="toggleBtn" style="font-size:18px;">Sakrij kontrole</button>
+  </div>
+
   <div class="box">
-    <div class="row">
-      <span class="label">Font:</span>
-      <button onclick="changeFont(-1)">A-</button>
-      <span id="fontSizeLabel">18</span>
-      <button onclick="changeFont(1)">A+</button>
-      <button onclick="resetFont()">Reset</button>
-    </div>
+    <div id="controlsTop">
+      <div class="row">
+        <span class="label">Font:</span>
+        <button onclick="changeFont(-1)">A-</button>
+        <span id="fontSizeLabel">18</span>
+        <button onclick="changeFont(1)">A+</button>
+        <button onclick="resetFont()">Reset</button>
+      </div>
 
-    <div class="row">
-      <span class="label">Broj rijeci za generisanje:</span>
-      <input type="number" id="genWords" value="600">
-      <button onclick="generateText()">Generisi</button>
-    </div>
+      <div class="row">
+        <span class="label">Broj rijeci za generisanje:</span>
+        <input type="number" id="genWords" value="600">
+        <button onclick="generateText()">Generisi</button>
+      </div>
 
-    <div class="row">
-      <span class="label">Ucitaj .txt fajl:</span>
-      <input type="file" id="fileInput" accept=".txt,text/plain" onchange="loadTextFile(event)">
+      <div class="row">
+        <span class="label">Ucitaj .txt fajl:</span>
+        <input type="file" id="fileInput" accept=".txt,text/plain" onchange="loadTextFile(event)">
+      </div>
     </div>
 
     <textarea id="textArea" oninput="updateCount()" onkeyup="updateCount()"></textarea>
 
     <div class="row info" id="countLabel">Rijeci: 0 Karaktera: 0</div>
 
-    <div class="row">
-      <button onclick="clearText()">Clear</button>
-      <button onclick="countSelection()">Prebroji selektovano</button>
-      <span class="info" id="selectionLabel">Selektovano rijeci: 0</span>
-    </div>
+    <div id="controlsBottom">
+      <div class="row">
+        <button onclick="clearText()">Clear</button>
+        <button onclick="countSelection()">Prebroji selektovano</button>
+        <span class="info" id="selectionLabel">Selektovano rijeci: 0</span>
+      </div>
 
-    <div class="row">
-      <button onclick="savePosition()">Sacuvaj poziciju (dokle sam stao)</button>
-      <button onclick="goToSavedPosition()">Idi na sacuvanu poziciju</button>
-      <span class="info" id="positionLabel"></span>
+      <div class="row">
+        <button onclick="savePosition()">Sacuvaj poziciju (dokle sam stao)</button>
+        <button onclick="goToSavedPosition()">Idi na sacuvanu poziciju</button>
+        <span class="info" id="positionLabel"></span>
+      </div>
     </div>
   </div>
 
-  <div class="col2-wrap">
+  <div class="col2-wrap" id="controlsTimers">
     <div class="col2-left">
       <div class="box">
         <div class="label">Tajmer (countdown)</div>
@@ -535,6 +543,29 @@
       stopwatchPause();
       stopwatchElapsed = 0;
       stopwatchUpdateDisplay();
+    }
+
+    // --- Sakrivanje kontrola radi vise prostora za tekst na malom ekranu ---
+    var controlsHidden = false;
+
+    function toggleControls() {
+      controlsHidden = !controlsHidden;
+      var displayValue = controlsHidden ? "none" : "block";
+
+      document.getElementById("controlsTop").style.display = displayValue;
+      document.getElementById("controlsBottom").style.display = displayValue;
+      document.getElementById("controlsTimers").style.display = controlsHidden ? "none" : "";
+
+      document.getElementById("toggleBtn").innerHTML = controlsHidden ? "Prikazi kontrole" : "Sakrij kontrole";
+
+      var ta = document.getElementById("textArea");
+      if (controlsHidden) {
+        var targetHeight = Math.round(window.innerHeight * 0.7);
+        if (targetHeight < 200) targetHeight = 200;
+        ta.style.height = targetHeight + "px";
+      } else {
+        ta.style.height = "260px";
+      }
     }
 
     // Inicijalno stanje
