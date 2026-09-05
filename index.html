@@ -59,37 +59,7 @@
   </div>
 
   <div class="col2-wrap" id="controlsTimers">
-    <div class="col2-left">
-      <div class="box">
-        <div class="label">Tajmer (countdown)</div>
-        <div class="row">
-          Min: <input type="number" id="timerMin" value="1" style="width:40px;">
-          Sek: <input type="number" id="timerSec" value="0" style="width:40px;">
-        </div>
-        <div class="row">
-          <span class="timer-display" id="timerDisplay">01:00</span>
-        </div>
-        <div class="row">
-          <button onclick="timerStart()">Start</button>
-          <button onclick="timerPause()">Pauza</button>
-          <button onclick="timerReset()">Reset</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col2-right">
-      <div class="box">
-        <div class="label">Stoperica</div>
-        <div class="row">
-          <span class="timer-display" id="stopwatchDisplay">00:00</span>
-        </div>
-        <div class="row">
-          <button onclick="stopwatchStart()">Start</button>
-          <button onclick="stopwatchPause()">Pauza</button>
-          <button onclick="stopwatchReset()">Reset</button>
-        </div>
-      </div>
-    </div>
+   
  <div class="box">
   <div style="margin-bottom: 1em;" class="label">Izracun WPM (rijeci u minuti)</div>
   <div class="row">
@@ -109,7 +79,37 @@
 
   </div>
 
+<div class="col2-left">
+  <div class="box">
+    <div class="label">Tajmer (countdown)</div>
+    <div class="row">
+      Min: <input type="number" id="timerMin" value="1" style="width:40px;">
+      Sek: <input type="number" id="timerSec" value="0" style="width:40px;">
+    </div>
+    <div class="row">
+      <span class="timer-display" id="timerDisplay">01:00</span>
+    </div>
+    <div class="row">
+      <button onclick="timerStart()">Start</button>
+      <button onclick="timerPause()">Pauza</button>
+      <button onclick="timerReset()">Reset</button>
+    </div>
+  </div>
+</div>
 
+<div class="col2-right">
+  <div class="box">
+    <div class="label">Stoperica</div>
+    <div class="row">
+      <span class="timer-display" id="stopwatchDisplay">00:00</span>
+    </div>
+    <div class="row">
+      <button onclick="stopwatchStart()">Start</button>
+      <button onclick="stopwatchPause()">Pauza</button>
+      <button onclick="stopwatchReset()">Reset</button>
+    </div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 
