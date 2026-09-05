@@ -2,15 +2,16 @@ var fontSize = 18;
 var FONT_MIN = 12;
 var FONT_MAX = 48;
 var wpmRijeci = document.getElementById('wpmRijeci');
-var wpmVrij = document.getElementById('wpmVrij');
+var sek = document.getElementById('sek');
+var min = document.getElementById('min');
 var wpmRez = document.getElementById('wpmRez');
 var wpmBtn = document.getElementById('wpmBtn');
 
 
 
 function calcWpm() {
-    var sekuMin = Number(wpmVrij.value) / 60;
-  wpmRez.value = Math.floor(wpmRijeci.value / sekuMin);
+  var mints = (Number(min.value) * 60 + Number(sek.value)) / 60;
+  wpmRez.value = Math.floor(wpmRijeci.value / mints);
 }
 
 wpmBtn.addEventListener('click', function (e) {

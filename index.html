@@ -64,17 +64,19 @@
   <div style="margin-bottom: 1em;" class="label">Izracun WPM (rijeci u minuti)</div>
   <div class="row">
     <span class="label" style="display:inline-block; width:110px;">Br. rijeci:</span>
-    <input id="wpmRijeci" type="number" style="width:80px;">
+    <input id="wpmRijeci" value="0" type="number" style="width:80px;">
   </div>
   <div class="row">
-    <span class="label" style="display:inline-block; width:110px;">Vrijeme (sek):</span>
-    <input id="wpmVrij" type="number" style="width:80px;">
+    <span class="label" style="display:inline-block; width:110px;">Min</span>
+    <input id="min" value="0"  type="number" style="width:80px;">
+    <label for=""><strong>Sek</strong></label>
+    <input id="sek" value="0"  type="number">
   </div>
   <div class="row">
     <span class="label" style="display:inline-block; width:110px;">Rezultat:</span>
     <input id="wpmRez" type="number" style="width:80px;" readonly>
   </div>
-  <button id="wpmBtn" onclick="calcWpm()">Izracunaj</button>
+  <button readonly  id="wpmBtn" >Izracunaj</button>
 </div>
 
   </div>
