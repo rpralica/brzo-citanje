@@ -127,6 +127,9 @@ function countSelection() {
   }
   document.getElementById('selectionLabel').innerHTML =
     'Selektovano rijeci: ' + n;
+    wpmRijeci.value=n;
+    min.value=timerMin.value;
+    sek.value=timerSec.value;
 }
 
 // --- Banka recenica za generisanje vjezbovnog teksta ---
