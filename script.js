@@ -6,7 +6,29 @@ var sek = document.getElementById('sek');
 var min = document.getElementById('min');
 var wpmRez = document.getElementById('wpmRez');
 var wpmBtn = document.getElementById('wpmBtn');
+var markerStart = null;
+var markerEnd = null;
 
+function setMarkerStart() {
+  markerStart = document.getElementById('textArea').selectionStart;
+  document.getElementById('markerInfo').innerHTML =
+    'Pocetak: karakter ' + markerStart;
+}
+
+function setMarkerEnd() {
+  markerEnd = document.getElementById('textArea').selectionStart;
+  if (markerStart === null) {
+    alert('Prvo postavi Marker Pocetak.');
+    return;
+  }
+  var content = document.getElementById('textArea').value;
+  var from = Math.min(markerStart, markerEnd);
+  var to = Math.max(markerStart, markerEnd);
+  var segment = content.substring(from, to);
+  var words = countWords(segment);
+  document.getElementById('markerInfo').innerHTML =
+    'Procitano: ' + words + ' rijeci (od ' + from + ' do ' + to + ')';
+}
 
 
 function calcWpm() {
